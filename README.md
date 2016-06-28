@@ -4,7 +4,13 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/spatie/dom-component-parser/master.svg?style=flat-square)](https://travis-ci.org/spatie/dom-component-parser)
 
-## The Why
+```js
+import component from 'dom-component-parser';
+
+component('my-uploader', { uploadUrl: '' });
+
+// <div class="js-my-uploader" data-upload-url="http://example.com">
+```
 
 Sometimes you want to be able to quickly set up a JavaScript component in your dome with some settings. Libraries like [Vue.js](https://github.com/vuejs/vue) provide a powerful API to create custom components, but is quite heavy for cases like mounting third party libraries to your DOM.
 
@@ -52,14 +58,6 @@ const uploader = component('uploader', {
 });
 
 new Uploader(uploader.node, uploader.options);
-```
-
-```js
-import component from 'dom-component-parser';
-
-component('my-uploader', { uploadUrl: '' });
-
-// <div class="js-my-uploader" data-upload-url="http://example.com">
 ```
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
