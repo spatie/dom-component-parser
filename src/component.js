@@ -1,4 +1,4 @@
-import { keys } from './helpers';
+import { keys, toSnakeCase } from './helpers';
 
 export const component = (tag, defaultOptions = {}) => {
 
@@ -6,7 +6,7 @@ export const component = (tag, defaultOptions = {}) => {
 
         const parseOption = option => {
 
-            if (!component.hasAttribute(`data-${option}`)) {
+            if (!component.hasAttribute(`data-${toSnakeCase(option)}`)) {
 
                 if (defaultOptions[option] === 'required') {
                     throw new Error(`Option ${option} is required on component ${component}`);
@@ -15,7 +15,7 @@ export const component = (tag, defaultOptions = {}) => {
                 return defaultOptions[option];
             }
 
-            const value = component.getAttribute(`data-${option}`);
+            const value = component.getAttribute(`data-${toSnakeCase(option)}`);
 
             if (value === '') {
                 return true;

@@ -81,4 +81,16 @@ describe('component', () => {
 
     });
 
+    it('converts camels to snakes', () => {
+
+        document.body.innerHTML = `
+            <div class="js-my-component" data-foo-bar="baz"></div>
+        `;
+
+        const [ myComponent ] = component('my-component', { fooBar: '' });
+
+        assert.propertyVal(myComponent.options, 'fooBar', 'baz');
+
+    });
+
 });

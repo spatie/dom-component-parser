@@ -8,3 +8,5 @@ export const keys = object => {
 
     return keys;
 };
+
+export const toSnakeCase = string => string.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
