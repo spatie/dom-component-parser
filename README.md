@@ -56,6 +56,10 @@ $ npm install dom-component-parser
 
 ## Usage
 
+### Retrieving Components
+
+The `component` method always returns an array of results. Components are queried for a class with their names prefixed by `js-`, e.g. a component named uploader expects an element with a `js-uploader` class.
+
 ```html
 <div class="js-my-uploader" data-upload-url="http://example.com"></div>
 ```
@@ -63,8 +67,47 @@ $ npm install dom-component-parser
 ```js
 import component from 'dom-component-parser';
 
-const myUploaders = component('my-uploader', { uploadUrl: '' });
-// => [ { node: <DOMNode>, options: { uploadUrl: 'http://example.com' } } ]
+const myUploaders = component('my-uploader');
+// => [ { node: <DOMNode>, options: {} } ]
+```
+
+### Declaring Component options
+
+Component options are declared as objects, and map to the component's `data` attributes. The attribute's corresponding value provided in the script will be used as the default value if it's omitted from the DOM node. Camel-cased object keys will look for a snake-cased data attributes.
+
+```html
+<div class="js-my-uploader"></div>
+<div class="js-my-uploader" data-upload-url="http://my-site.com/upload"></div>
+```
+
+```js
+const myUploaders = component('my-uploader', { uploadUrl: 'http://example.com' });
+// [ { node: <DOMNode>, options: { uploadUrl: 'http://example.com' } },
+//   { node: <DOMNode>, options: { uploadUrl: 'http://my-site.com/upload' } } ]
+```
+
+There's also a special `required` keyword, which will throw an error if the `data` attribute is missing.
+
+```html
+<div class="js-my-uploader"></div>
+```
+
+```js
+const myUploaders = component('my-uploader', { uploadUrl: 'required' });
+// Error: Option `required` is missing on component `my-uploader`
+```
+
+Attributes without values will be casted to `true`.
+
+```html
+<div class="js-my-uploader"></div>
+<div class="js-my-uploader" data-multiple></div>
+```
+
+```js
+const myUploaders = component('my-uploader', { multiple: false });
+// [ { node: <DOMNode>, options: { multiple: false } },
+//   { node: <DOMNode>, options: { multiple: true } } ]
 ```
 
 ## Change log
