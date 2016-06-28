@@ -69,4 +69,16 @@ describe('component', () => {
 
     });
 
+    it('casts attributes without values to a boolean', () => {
+
+        document.body.innerHTML = `
+            <div class="js-my-component" data-foo></div>
+        `;
+
+        const [ myComponent ] = component('my-component', { foo: false });
+
+        assert.propertyVal(myComponent.options, 'foo', true);
+
+    });
+
 });
