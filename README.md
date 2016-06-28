@@ -38,7 +38,7 @@ The `dom-component-parser` cleans up the above process by declaring a component 
 ```js
 import component from 'dom-component-parser';
 
-const uploaders = component('uploader', {
+component('uploader', {
     url: 'required', // `required` is a special flag, will throw an error if missing
     multiple: false, // Defaults to false
 }).forEach(({ node, options }) => new Uploader(node, options));
