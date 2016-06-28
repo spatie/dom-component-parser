@@ -30,8 +30,8 @@ export const component = (tag, defaultOptions = {}) => {
         }, {});
     };
 
-    return [...document.getElementsByClassName(`js-${tag}`)].map(component => ({
-        node: component,
+    return [...document.getElementsByClassName(`js-${tag}`)].map(node => ({
+        node,
         options: options(component),
     }));
 };
