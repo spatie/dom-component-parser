@@ -41,9 +41,7 @@ import component from 'dom-component-parser';
 const uploaders = component('uploader', {
     url: 'required', // `required` is a special flag, will throw an error if missing
     multiple: false, // Defaults to false
-});
-
-new Uploader(uploader.node, uploader.options);
+}).forEach(({ node, options }) => new Uploader(node, options));
 ```
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
