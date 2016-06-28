@@ -10,30 +10,17 @@
 - Choose your ```.eslintrc```
 - **Delete this list**
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+```js
+import component from 'dom-component-parser';
+
+component('my-uploader', { uploadUrl: '' });
+
+// <div class="js-my-uploader" data-upload-url="http://example.com">
+```
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
 ## Install
-
-**Private package installation**
-
-This package is custom built for [Spatie](https://spatie.be) projects and is therefore not registered on npm.
-In order to install it via npm you have to go through out registry:
-
-```bash
-npm set registry https://npm.spatie.be
-npm set ca null
-```
-
-Or you can require the package straight from Github:
-
-```bash
-npm install spatie-custom/dom-component-parser
-```
-
-**Public package installation**
 
 You can install the package via npm:
 
@@ -43,10 +30,12 @@ $ npm install dom-component-parser
 
 ## Usage
 
-```es6
-const myPackage = require('my-package');
+```js
+import component from 'dom-component-parser';
 
-myPackage.doStuff();
+component('my-uploader', { uploadUrl: '' });
+
+// <div class="js-my-uploader" data-upload-url="http://example.com">
 ```
 
 ## Change log
