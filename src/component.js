@@ -9,7 +9,7 @@ export const component = (tag, defaultOptions = {}) => {
             if (!component.hasAttribute(`data-${toSnakeCase(option)}`)) {
 
                 if (defaultOptions[option] === 'required') {
-                    throw new Error(`Option ${option} is required on component ${component}`);
+                    throw new Error(`Option \`${option}\` is required on component \`${component}\``);
                 }
 
                 return defaultOptions[option];
