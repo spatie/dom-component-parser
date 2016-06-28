@@ -1,0 +1,39 @@
+{
+  "name": "dom-component-parser",
+  "version": "0.0.1",
+  "description": "Extract nodes and corresponding custom options from the DOM",
+  "main": "dist/index.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-register",
+    "build": "babel src -d dist",
+    "lint": "eslint src",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spatie/dom-component-parser.git"
+  },
+  "keywords": [
+    "spatie"
+  ],
+  "author": "Sebastian De Deyne",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spatie/dom-component-parser/issues"
+  },
+  "homepage": "https://github.com/spatie/dom-component-parser",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^2.9.0",
+    "jsdom": "^9.3.0",
+    "mocha": "^2.5.3",
+    "mocha-jsdom": "^1.1.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}
