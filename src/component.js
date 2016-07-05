@@ -2,11 +2,11 @@ import { keys, toSnakeCase } from './helpers';
 
 export const component = (tag, defaultOptions = {}) => {
 
-    const options = node => {
+    const options = element => {
 
         const parseOption = option => {
 
-            if (!node.hasAttribute(`data-${toSnakeCase(option)}`)) {
+            if (!element.hasAttribute(`data-${toSnakeCase(option)}`)) {
 
                 if (defaultOptions[option] === 'required') {
                     throw new Error(`Option \`${option}\` is required on component \`${tag}\``);
@@ -15,7 +15,7 @@ export const component = (tag, defaultOptions = {}) => {
                 return defaultOptions[option];
             }
 
-            const value = node.getAttribute(`data-${toSnakeCase(option)}`);
+            const value = element.getAttribute(`data-${toSnakeCase(option)}`);
 
             if (value === '') {
                 return true;
@@ -30,9 +30,9 @@ export const component = (tag, defaultOptions = {}) => {
         }, {});
     };
 
-    return [...document.getElementsByClassName(`js-${tag}`)].map(node => ({
-        node,
-        options: options(node),
+    return [...document.getElementsByClassName(`js-${tag}`)].map(element => ({
+        element,
+        options: options(element),
     }));
 };
 
