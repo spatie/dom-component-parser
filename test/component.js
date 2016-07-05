@@ -15,7 +15,7 @@ describe('component', () => {
         const myComponents = component('my-component');
 
         assert.lengthOf(myComponents, 1);
-        assert.equal(document.querySelectorAll('.js-my-component')[0], myComponents[0].node);
+        assert.equal(document.querySelectorAll('.js-my-component')[0], myComponents[0].element);
 
     });
 
@@ -29,8 +29,8 @@ describe('component', () => {
         const myComponents = component('my-component');
 
         assert.lengthOf(myComponents, 2);
-        assert.equal(document.querySelectorAll('.js-my-component')[0], myComponents[0].node);
-        assert.equal(document.querySelectorAll('.js-my-component')[1], myComponents[1].node);
+        assert.equal(document.querySelectorAll('.js-my-component')[0], myComponents[0].element);
+        assert.equal(document.querySelectorAll('.js-my-component')[1], myComponents[1].element);
 
     });
 
